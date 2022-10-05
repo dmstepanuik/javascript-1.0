@@ -190,3 +190,14 @@
 // lena.name = "Elena";
 
 // const str = "I am string";
+
+function hello() {
+  console.log("Hello", this);
+}
+
+const person = {
+  name: "Dmytro",
+  age: 39,
+  sayHello: hello,
+  sayHelloWindow: hello.bind(),
+};
