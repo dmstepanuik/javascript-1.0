@@ -191,13 +191,96 @@
 
 // const str = "I am string";
 
-function hello() {
-  console.log("Hello", this);
-}
+// function hello() {
+//   console.log("Hello", this);
+// }
 
-const person = {
-  name: "Dmytro",
-  age: 39,
-  sayHello: hello,
-  sayHelloWindow: hello.bind(),
-};
+// const person = {
+//   name: "Dmytro",
+//   age: 39,
+//   sayHello: hello,
+//   sayHelloWindow: hello.bind(document),
+//   logInfo: function (job, phone) {
+//     console.group(`${this.name} info:`);
+//     console.log(`Name is ${this.name}`);
+//     console.log(`Age is ${this.age}`);
+//     console.log(`Job is ${job}`);
+//     console.log(`Phone is ${phone}`);
+//     console.groupEnd();
+//   },
+// };
+
+// const lena = {
+//   name: "Elena",
+//   age: 35,
+// };
+
+// person.logInfo.bind(lena, "Fontend", "8-067-123-12-15")();
+// person.logInfo.call(lena, "Fontend", "8-067-123-12-15");
+// person.logInfo.apply(lena, ["Fontend", "8-067-123-12-15"]);
+
+// //====================================
+// const array = [1, 2, 3, 4, 5];
+
+// // function mulyBy(arr, n) {
+// //   return arr.map(function (i) {
+// //     return i * n;
+// //   });
+// // }
+// Array.prototype.multBy = function (n) {
+//   return this.map(function (i) {
+//     return i * n;
+//   });
+// };
+
+// console.log(array.multBy(20));
+// // console.log(mulyBy(array, 15));
+
+// const myPromise = (delay) => new Promise((res, rej) => setTimeout(res, delay));
+
+// const myPromise2 = (delay) => {
+//   return new Promise((res, rej) => {
+//     setTimeout(res, delay);
+//   });
+// };
+
+// const foo = () => 5;
+// const foo2 = () => {
+//   return 5;
+// };
+
+// function createCulcFunction(n) {
+//   return function () {
+//     console.log(1000 * n);
+//   };
+// }
+
+// const calc = createCulcFunction(42);
+// calc();
+
+// function createIncrementor(n) {
+//   return function (num) {
+//     return n + num;
+//   };
+// }
+// const addOne = createIncrementor(1);
+// const addTen = createIncrementor(10);
+
+// console.log(addOne(10));
+// console.log(addOne(41));
+
+// console.log(addTen(10));
+// console.log(addTen(41));
+
+// ===================
+
+// function urlGenerator(domain) {
+//   return function (url) {
+//     return `https://${url}.${domain}`;
+//   };
+// }
+// const comUrl = urlGenerator("com");
+// const uaUrl = urlGenerator("ua");
+
+// console.log(comUrl("google"));
+// console.log(comUrl("ua"));
