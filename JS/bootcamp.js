@@ -524,32 +524,120 @@ const url = "https://jsonplaceholder.typicode.com/todos/1";
 
 // optimization
 
-const IndexArray = new Proxy(Array, {
-  construct(target, [args]) {
-    const index = {};
-    args.forEach((item) => (index[item.id] = item));
+// const IndexArray = new Proxy(Array, {
+//   construct(target, [args]) {
+//     const index = {};
+//     args.forEach((item) => (index[item.id] = item));
 
-    return new Proxy(new target(...args), {
-      get(arr, prop) {
-        switch (prop) {
-          case "push":
-            return (item) => {
-              index[item.id] = item;
-              arr[prop].call(arr, item);
-            };
-          case "findById":
-            return (id) => index[id];
-          default:
-            return arr[prop];
-        }
-      },
-    });
-  },
-});
+//     return new Proxy(new target(...args), {
+//       get(arr, prop) {
+//         switch (prop) {
+//           case "push":
+//             return (item) => {
+//               index[item.id] = item;
+//               arr[prop].call(arr, item);
+//             };
+//           case "findById":
+//             return (id) => index[id];
+//           default:
+//             return arr[prop];
+//         }
+//       },
+//     });
+//   },
+// });
 
-const users = new IndexArray([
-  { id: 11, name: "Ivan", job: "Fullstack", age: 31 },
-  { id: 22, name: "Marta", job: "Student", age: 25 },
-  { id: 33, name: "Petro", job: "Teacher", age: 42 },
-  { id: 44, name: "Dmytro", job: "Backend", age: 31 },
-]);
+// const users = new IndexArray([
+//   { id: 11, name: "Ivan", job: "Fullstack", age: 31 },
+//   { id: 22, name: "Marta", job: "Student", age: 25 },
+//   { id: 33, name: "Petro", job: "Teacher", age: 42 },
+//   { id: 44, name: "Dmytro", job: "Backend", age: 31 },
+// ]);
+
+// function* strGenerator() {
+//   yield "H";
+//   yield "e";
+//   yield "l";
+//   yield "l";
+//   yield "o";
+// }
+// const str = strGenerator();
+//
+
+// function* iter(n = 10) {
+//   for (let i = 0; i < n; i++) {
+//     yield i;
+//   }
+// }
+
+// for (let k of iter(6)) {
+//   console.log(k);
+// }
+const people = [
+  { name: "Igor", age: 25, budget: 4000 },
+  { name: "Mary", age: 17, budget: 3700 },
+  { name: "Ann", age: 23, budget: 5000 },
+  { name: "john", age: 15, budget: 8000 },
+  { name: "Bill", age: 27, budget: 5500 },
+  { name: "Kate", age: 29, budget: 6700 },
+];
+// forEach
+// for (let i = 0; i < people.length; i += 1) console.log(people[i]);
+
+// for (let person of people) {
+//   console.log(person);
+// }
+
+// people.forEach(function (person) {
+//   console.log(person);
+
+// });
+// people.forEach((person) => console.log(person));
+
+// map
+
+// const newPeople = people.map((person) => person.age * 3);
+// console.log(newPeople);
+
+// Filter
+// const adults = [];
+// for (let i = 0; i < people.length; i += 1) {
+//   if (people[i].age >= 18) {
+//     adults.push(people[i]);
+//   }
+// }
+// console.log(adults);
+// const adults = people.filter((person) => person.age >= 18);
+
+// console.log(adults);
+
+// Reduce
+// let amount = 0;
+// for (let i = 0; i < people.length; i += 1) {
+//   amount += people[i].budget;
+// }
+// console.log(amount);
+
+// const amount = people.reduce((total, person) => total + person.budget, 0);
+// console.log(amount);
+
+// Find
+// const Igor = people.find((person) => person.name === "Igor");
+// console.log(Igor);
+
+// FindIndex
+// const IgorIndex = people.findIndex((person) => person.name === "Igor");
+// console.log(IgorIndex);
+
+// ============
+
+const amount = people
+  .filter(person => person.budget > 5000)
+  .map(person => {
+    return {
+      info: `${person.name} (${person.age})`,
+      budget: person.budget,
+    };
+  });
+.reduce((total, person) => total + person.budget, 0);
+console.log(amount);
