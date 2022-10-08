@@ -284,3 +284,272 @@
 
 // console.log(comUrl("google"));
 // console.log(comUrl("ua"));
+
+// const person = Object.create(
+//   {
+//     calculateAge() {
+//       console.log("Age:", new Date().getFullYear() - this.birthYaer);
+//     },
+//   },
+//   {
+//     name: {
+//       value: "Dmytro",
+//       enumerable: true,
+//       writable: true,
+//       configurable: true,
+//     },
+//     birthYaer: {
+//       value: 1983,
+//       enumerable: false,
+//       writable: false,
+//       configurable: false,
+//     },
+//     age: {
+//       get() {
+//         return new Date().getFullYear() - this.birthYaer;
+//       },
+//       set(value) {
+//         document.body.style.background = "red";
+//         console.log("Set age", value);
+//       },
+//     },
+//   }
+// );
+// // console.log(person);
+// // const person = {
+// //   name: "Dmytro",
+// //   birthYear: 1983,
+// // };
+// person.name = "Dmytro";
+
+// for (let key in person) {
+//   if (person.hasOwnProperty(key)) {
+//   }
+//   console.log("Key", key, person[key]);
+// }
+
+// const amimal = {
+//   name: "Animal",
+//   age: 5,
+//   hasTail: true,
+// };
+
+//
+
+// class Component {
+//   constructor(selector) {
+//     this.$el = document.querySelector(selector);
+//   }
+
+//   hide() {
+//     this.$el.style.display = "none";
+//   }
+//   show() {
+//     this.$el.style.display = "block";
+//   }
+// }
+
+// class box extends Component {
+//   constructor(options) {
+//     super(options.selector);
+
+//     this.$el.style.width = this.$el.style.height = options.size + "px";
+//     this.$el.style.background = options.color;
+//   }
+// }
+
+// const box1 = new box({
+//   selector: "#box1",
+//   size: 100,
+//   color: "red",
+// });
+
+// const box2 = new box({
+//   selector: "#box2",
+//   size: 120,
+//   color: "blue",
+// });
+
+// class Circle extends box {
+//   constructor(options) {
+//     super(options);
+
+//     this.$el.style.borderRadius = "50%";
+//   }
+// }
+
+// const c = new Circle({
+//   selector: "#circle",
+//   size: 90,
+//   color: "green",
+// });
+
+const delay = (ms) => {
+  return new Promise((r) => setTimeout(() => r(), ms));
+};
+// delay(2000).then(() => console.log("2sec"));
+
+const url = "https://jsonplaceholder.typicode.com/todos/1";
+
+// function fetchTodos() {
+//   console.log("Fetch todo started...");
+//   return delay(2000)
+//     .then(() => {
+//       return fetch(url);
+//     })
+//     .then((response) => response.json());
+// }
+
+// fetchTodos()
+//   .then((data) => {
+//     console.log("Data", data);
+//   })
+//   .catch((e) => console.log(e));
+
+// async function fetchAsyncTodos() {
+//   console.log("Fetch todo started...");
+//   try {
+//     await delay(2000);
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     console.log("Data", data);
+//   } catch (e) {
+//     console.log(e);
+//   } finally {
+//   }
+// }
+
+// fetchAsyncTodos()
+
+// const person = {
+//   name: "Dmytro",
+//   age: 39,
+//   job: "Fullstack",
+// };
+
+// const op = new Proxy(person, {
+//   get(target, prop) {
+//     // console.log("getting prop${prop}");
+//     if (!(prop in target)) {
+//       return prop
+//         .split("")
+//         .map((p) => target[p])
+//         .join(" ");
+//     }
+//     return target[prop];
+//   },
+//   set(target, prop, value) {
+//     if (prop in target) {
+//       target[prop] = value;
+//     } else {
+//       throw new Error("No $ {prop} field in target");
+//     }
+//   },
+//   has(target, prop) {
+//     return ["age", "name", "job"].includes(prop);
+//   },
+//   deleteProperty(target, prop) {
+//     console.log("Deteting...", prop);
+//     delete target[prop];
+//     return true;
+//   },
+// });
+
+// ////Functions
+// const log = (text) => "Log: $ {text}";
+
+// const fp = new Proxy(log, {
+//   apply(target, thisArg, args) {
+//     console.log("Calling fn...");
+
+//     return target.apply(thisArg, args).toUpperCase();
+//   },
+// });
+// ///Classes
+// class Person {
+//   constructor(name, age) {
+//     this.name = name;
+//     this.age = age;
+//   }
+// }
+
+// const PersonProxy = new Proxy(Person, {
+//   construct(target, args) {
+//     console.log("construct....");
+
+//     return new Proxy(new target(...args), {
+//       get(t, prop) {
+//         console.log('Getting prop "${prop"');
+//         return t[prop];
+//       },
+//     });
+//   },
+// });
+
+// const p = new PersonProxy("Ivan", 30);
+
+///wrapper
+
+// const withDefaultValue = (target, deefaultValue = 0) => {
+//   return new Proxy(target, {
+//     get: (obj, prop) => (prop in obj ? obj[prop] : deefaultValue),
+//   });
+// };
+
+// const position = withDefaultValue(
+//   {
+//     x: 24,
+//     y: 42,
+//   },
+//   0
+// );
+
+// // console.log(position);
+
+// // Hidden properies
+
+// const withHiddenProps = (target, prefix = "_") => {
+//   return new Proxy(target, {
+//     has: (obj, prop) => prop in obj && !prop.startsWith(prefix),
+//     ownKeys: (obj) => Reflect.ownKeys(obj).filter((p) => !p.startsWith(prefix)),
+//     get: (obj, prop, receiver) => (prop in receiver ? obj[prop] : void 0),
+//   });
+// };
+
+// const data = withHiddenProps({
+//   name: "Ivan",
+//   age: 38,
+//   _uid: "21235",
+// });
+
+// optimization
+
+const IndexArray = new Proxy(Array, {
+  construct(target, [args]) {
+    const index = {};
+    args.forEach((item) => (index[item.id] = item));
+
+    return new Proxy(new target(...args), {
+      get(arr, prop) {
+        switch (prop) {
+          case "push":
+            return (item) => {
+              index[item.id] = item;
+              arr[prop].call(arr, item);
+            };
+          case "findById":
+            return (id) => index[id];
+          default:
+            return arr[prop];
+        }
+      },
+    });
+  },
+});
+
+const users = new IndexArray([
+  { id: 11, name: "Ivan", job: "Fullstack", age: 31 },
+  { id: 22, name: "Marta", job: "Student", age: 25 },
+  { id: 33, name: "Petro", job: "Teacher", age: 42 },
+  { id: 44, name: "Dmytro", job: "Backend", age: 31 },
+]);
