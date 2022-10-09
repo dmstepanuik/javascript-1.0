@@ -631,13 +631,13 @@ const people = [
 
 // ============
 
-const amount = people
-  .filter(person => person.budget > 5000)
-  .map(person => {
-    return {
-      info: `${person.name} (${person.age})`,
-      budget: person.budget,
-    };
-  });
-.reduce((total, person) => total + person.budget, 0);
-console.log(amount);
+// const amount = people
+//   .filter(person => person.budget > 5000)
+//   .map(person => {
+//     return {
+//       info: `${person.name} (${person.age})`,
+//       budget: person.budget,
+//     };
+//   });
+// .reduce((total, person) => total + person.budget, 0);
+// console.log(amount);
