@@ -573,14 +573,14 @@
 // for (let k of iter(6)) {
 //   console.log(k);
 // }
-const people = [
-  { name: "Igor", age: 25, budget: 4000 },
-  { name: "Mary", age: 17, budget: 3700 },
-  { name: "Ann", age: 23, budget: 5000 },
-  { name: "john", age: 15, budget: 8000 },
-  { name: "Bill", age: 27, budget: 5500 },
-  { name: "Kate", age: 29, budget: 6700 },
-];
+// const people = [
+//   { name: "Igor", age: 25, budget: 4000 },
+//   { name: "Mary", age: 17, budget: 3700 },
+//   { name: "Ann", age: 23, budget: 5000 },
+//   { name: "john", age: 15, budget: 8000 },
+//   { name: "Bill", age: 27, budget: 5500 },
+//   { name: "Kate", age: 29, budget: 6700 },
+// ];
 // forEach
 // for (let i = 0; i < people.length; i += 1) console.log(people[i]);
 
@@ -641,3 +641,27 @@ const people = [
 //   });
 // .reduce((total, person) => total + person.budget, 0);
 // console.log(amount);
+
+const obj = {
+  name: "Dmytro",
+  age: 39,
+  job: "Fullstack",
+};
+const entries = [
+  ["name", "Dmytro"],
+  ["age", 26],
+  ["job", "Fullstack"],
+];
+console.log(Object.entries(obj));
+console.log(Object.fromEntries(entries));
+const map = new Map(entries);
+console.log(map.get("job"));
+console.log(obj.job);
+map.set(NaN, "Nan ??");
+map.set("newField", 42);
+map.delete("job");
+console.log(map.has("job"));
+// =======================
+for (let [key, value] of map) {
+  console.log(key, value);
+}
