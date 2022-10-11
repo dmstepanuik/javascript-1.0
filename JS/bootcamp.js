@@ -384,12 +384,12 @@
 //   color: "green",
 // });
 
-const delay = (ms) => {
-  return new Promise((r) => setTimeout(() => r(), ms));
-};
-// delay(2000).then(() => console.log("2sec"));
+// const delay = (ms) => {
+//   return new Promise((r) => setTimeout(() => r(), ms));
+// };
+// // delay(2000).then(() => console.log("2sec"));
 
-const url = "https://jsonplaceholder.typicode.com/todos/1";
+// const url = "https://jsonplaceholder.typicode.com/todos/1";
 
 // function fetchTodos() {
 //   console.log("Fetch todo started...");
