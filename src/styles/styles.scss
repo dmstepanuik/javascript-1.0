@@ -42,10 +42,14 @@ $height: 46px;
     cursor: pointer;
   }
 
+  &__name {
+    pointer-events: none;
+  }
   &__img-wrap {
     display: inline-block;
     transform-origin: center center;
     transition: transform ease-in-out 300ms;
+    pointer-events: none;
 
     &.rotate {
       transform: rotate(180deg);

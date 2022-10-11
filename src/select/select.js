@@ -10,18 +10,18 @@ const getTemplate = (data = [], placeholder) => {
   });
 
   return `
-   <div class="select__backdrop data-type="backdrop"></div>
+  <div class="select__backdrop data-type="backdrop"></div>
   <div class="select__input" data-type="input">
-            <span data-type="name">${text}</span>
-            <span class="select__img-wrap" data-type="arrow">
-              <img src="${img}" width="14">
-            </span>
-          </div>
-          <div class="select__dropdown">
-            <ul class="select__list">
-            ${items.join("")}  
-            </ul>
-          </div>`;
+    <span class="select__name" data-type="name">${text}</span>
+    <span class="select__img-wrap" data-type="arrow">
+      <img src="${img}" width="14">
+    </span>
+  </div>
+  <div class="select__dropdown">
+    <ul class="select__list">
+      ${items.join("")}  
+    </ul>
+  </div>`;
 };
 
 export class Select {
