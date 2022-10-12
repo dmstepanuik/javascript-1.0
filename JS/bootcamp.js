@@ -641,27 +641,192 @@
 //   });
 // .reduce((total, person) => total + person.budget, 0);
 // console.log(amount);
+// const obj = {
+//   name: "Dmytro",
+//   age: 39,
+//   job: "Fullstack",
+// };
 
-const obj = {
-  name: "Dmytro",
-  age: 39,
-  job: "Fullstack",
+// const entries = [
+//   ["name", "Dmytro"],
+//   ["age", 39],
+//   ["job", "Fullstack"],
+// ];
+
+// console.log(Object.entries(obj));
+// console.log(Object.fromEntries(entries));
+
+// const map = new Map(entries);
+
+// // console.log(obj.job);
+// // console.log(map.get("job"));
+// map.set("newField", 42);
+// map.set(obj, "Value of object");
+// map.set(NaN, "NaN ??");
+
+// console.log(map.get(NaN));
+// map.delete("job");
+// console.log(map.has("job"));
+// console.log(map.size);
+// map.clear();
+// console.log(map.size);
+
+// for (let [key, value] of map) {
+//   console.log(key, value);
+// }
+
+// for (let val of map.values()) {
+//   console.log(val);
+// }
+
+// map.forEach((val, key, m) => {
+//   console, log(val, key, m);
+// });
+
+// ====================================
+
+// const array = [...map];
+
+// console.log(array);
+
+// const array = Array.from(map);
+
+// const mapObj = Object.fromEntries(map.entries());
+// console.log(array);
+// ==============================
+
+// const users = [{ name: "Elena" }, { name: "Alex" }, { name: "Irina" }];
+
+// const visits = new Map();
+
+// visits.set(users[0], new Date());
+// visits.set(users[1], new Date(new Date().getTime() + 3000 * 60));
+// visits.set(users[2], new Date(new Date().getTime() + 6000 * 60));
+
+// function lastVisit(user) {
+//   return visits.get(user);
+// }
+// console.log(lastVisit(users[2]));
+
+// const set = new Set([1, 2, 3, 4, 5, 5, 6]);
+
+// set.add(10).add(20).add(30).add(20);
+// console.log(set);
+// console.log(set.has(30));
+// console.log(set.has(42));
+// console.log(set.size);
+
+// for (let key of set) {
+//   console.log(key);
+// }
+// =====================
+
+// function uniqValues(array) {
+//   return Array.from(new Set(array));
+// }
+// console.log(uniqValues([1, 1, 2, 2, 4, 4, 4, 4, 5, 6]));
+// =============================
+
+let obj = { name: "weakmap" };
+// const arr = [obj];
+// obj = null;
+// console.log(arr[0]);
+
+// const map = new WeakMap([[obj, "obj data"]]);
+
+// obj = null;
+
+// console.log(map);
+
+// // ======================
+
+// const cache = new WeakMap();
+
+// function cachUser(user) {
+//   if (!cache.has(user)) {
+//     cache.set(user, Date.now());
+//   }
+//   return cache.get(user);
+// }
+// let lena = { name: "Elena" };
+// let alex = { name: "Alex" };
+
+// cachUser(lena);
+// cachUser(alex);
+
+// console.log(cache.has(lena));
+// console.log(cache.has(alex));
+
+// const users = [{ name: "Elena" }, { name: "Alex" }, { name: "Dmytro" }];
+// const visits = new WeakSet();
+// visits.add(users[0]).add(users[1]);
+
+// users.splice(1, 1);
+
+// console.log(visits.has(users[0]));
+// console.log(visits.has(users[1]));
+
+// const requestUrl = "https://jsonplaceholder.typicode.com/users";
+
+// const xhr = new XMLHttpRequest();
+// xhr.open("GET", "requestURL");
+// xhr.responseType = "json";
+// xhr.onload = () => {
+//   console.log(xhr.respnse);
+// };
+// xhr.onerror = () => {};
+
+// xhr.send();
+const citiesUkraine = ["Kharkov", "Kiev", "Dnepr", "Lvov"];
+const cictiesEurope = ["Berlin", "Prague", "Paris"];
+const cititesUkraineWithPopulation = {
+  Kharkov: 3,
+  Kiev: 5,
+  Dnepr: 2,
+  Lvov: 1,
 };
-const entries = [
-  ["name", "Dmytro"],
-  ["age", 26],
-  ["job", "Fullstack"],
-];
-console.log(Object.entries(obj));
-console.log(Object.fromEntries(entries));
-const map = new Map(entries);
-console.log(map.get("job"));
-console.log(obj.job);
-map.set(NaN, "Nan ??");
-map.set("newField", 42);
-map.delete("job");
-console.log(map.has("job"));
-// =======================
-for (let [key, value] of map) {
-  console.log(key, value);
-}
+const cictiesEuropePopulation = {
+  Berlin: 10,
+  Prague: 5,
+  Paris: 7,
+};
+
+// console.log(...citiesUkraine);
+// console.log(...cictiesEurope);
+// const allCities = [...cictiesEurope,  ...citiesUkraine];
+// const allCities = cictiesEurope.concat(citiesUkraine);
+// console.log(allCities);
+// console.log({ ...cititesUkraineWithPopulation });
+
+// console.log({ ...cititesUkraineWithPopulation, ...cictiesEuropePopulation });
+// console.log({ ...cictiesEuropePopulation, ...cititesUkraineWithPopulation });
+
+// const numbers = [5, 37, 42, 54];
+// console.log(Math.max(5, 37, 42, 54));
+// console.log(Math.max(...numbers));
+// console.log(Math.max.apply(null, numbers));
+
+// const divs = document.querySelector("div");
+// console.log(divs);
+
+// rest
+
+// function sum(a, b, ...rest) {
+// return a + b + rest.reduce((a, i) => a + i, 0);
+
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// console.log(sum(...numbers));
+
+// const a = numbers[0];
+// const b = numbers[1];
+// const [a, b] = numbers;
+
+const person = {
+  name: "Max",
+  age: 20,
+  city: "Kharkov",
+  country: "Ukraine",
+};
+
+const { name, age, ...adress } = person;
+console.log(name, age, adress);
