@@ -727,7 +727,7 @@
 // console.log(uniqValues([1, 1, 2, 2, 4, 4, 4, 4, 5, 6]));
 // =============================
 
-let obj = { name: "weakmap" };
+// let obj = { name: "weakmap" };
 // const arr = [obj];
 // obj = null;
 // console.log(arr[0]);
@@ -776,20 +776,20 @@ let obj = { name: "weakmap" };
 // };
 // xhr.onerror = () => {};
 
-// xhr.send();
-const citiesUkraine = ["Kharkov", "Kiev", "Dnepr", "Lvov"];
-const cictiesEurope = ["Berlin", "Prague", "Paris"];
-const cititesUkraineWithPopulation = {
-  Kharkov: 3,
-  Kiev: 5,
-  Dnepr: 2,
-  Lvov: 1,
-};
-const cictiesEuropePopulation = {
-  Berlin: 10,
-  Prague: 5,
-  Paris: 7,
-};
+// // xhr.send();
+// const citiesUkraine = ["Kharkov", "Kiev", "Dnepr", "Lvov"];
+// const cictiesEurope = ["Berlin", "Prague", "Paris"];
+// const cititesUkraineWithPopulation = {
+//   Kharkov: 3,
+//   Kiev: 5,
+//   Dnepr: 2,
+//   Lvov: 1,
+// };
+// const cictiesEuropePopulation = {
+//   Berlin: 10,
+//   Prague: 5,
+//   Paris: 7,
+// };
 
 // console.log(...citiesUkraine);
 // console.log(...cictiesEurope);
@@ -821,12 +821,45 @@ const cictiesEuropePopulation = {
 // const b = numbers[1];
 // const [a, b] = numbers;
 
-const person = {
-  name: "Max",
-  age: 20,
-  city: "Kharkov",
-  country: "Ukraine",
-};
+// const person = {
+//   name: "Max",
+//   age: 20,
+//   city: "Kharkov",
+//   country: "Ukraine",
+// };
 
-const { name, age, ...adress } = person;
-console.log(name, age, adress);
+// const { name, age, ...adress } = person;
+// console.log(name, age, adress);
+
+function calcValues(a, b) {
+  return [a + b, a - b, a * b, a / b];
+}
+const [sum, , mult, ...other] = calcValues(42, 10);
+// const sum = result[0];
+// const sub = result[1];
+// const [sum, sub] = result;
+
+console.log(sum, mult, other);
+
+const person = {
+  name: "Dmytro",
+  age: 20,
+  address: {
+    country: "Ukraine",
+    city: "Kharkov",
+  },
+};
+// const {
+//   name: firstName = "Без имени",
+//   age,
+//   car = "Машины нет",
+//   address: { city: homeTown, country },
+// } = person;
+
+// const { name, ...info } = person;
+// console.log(name, info);
+
+function logPerson({ name: firstName = "111", age }) {
+  console.log(firstName + " " + age);
+}
+logPerson(person);
