@@ -870,12 +870,50 @@
 // localStorage.setItem("number", myNumber.toString());
 // console.log(localStorage.getItem("number"));
 
-const object = {
-  name: "Dmytro",
-  age: 35,
-};
-const raw = localStorage.getItem("person");
-const person = JSON.parse(raw);
-person.name = "Nick";
+// const object = {
+//   name: "Dmytro",
+//   age: 35,
+// };
+// const raw = localStorage.getItem("person");
+// const person = JSON.parse(raw);
+// person.name = "Nick";
 
-console.log(person);
+// console.log(person);
+
+// let admin, name;
+// name = "John";
+// admin = name;
+
+// alert("John");
+
+// // let ourPlanet = Earth;
+// let userName = "John";
+
+// // let = age;
+// // typeof undefined; // "undefined"
+
+// // typeof 0; // "number"
+
+// // typeof 10n; // "bigint"
+
+// // typeof true; // "boolean"
+
+// // typeof "foo"; // "string"
+
+// // typeof Symbol("id"); // "symbol"
+
+// // typeof Math; // "object"  (1)
+
+// typeof null;
+
+// typeof alert; // "function"  (3)
+
+// let name = prompt("Your name", "");
+// alert(name);
+
+// let hello = "Hello world";
+// let message;
+
+// message = hello;
+6 - "2";
+console.log(6 - "2");
