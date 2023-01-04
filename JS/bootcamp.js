@@ -915,5 +915,5 @@
 // let message;
 
 // message = hello;
-6 - "2";
-console.log(6 - "2");
+// 6 - "2";
+ 
